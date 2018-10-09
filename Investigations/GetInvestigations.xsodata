@@ -1,0 +1,7 @@
+service namespace "HSE.Investigation_Tool.Investigations"
+{
+  "_SYS_BIC"."HSE.Investigation_Tool.Investigations/AT_INVESTIGATIONS" as "Investigations"
+  keys ("INV_DBID");
+  
+  
+}

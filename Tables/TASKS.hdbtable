@@ -1,0 +1,22 @@
+table.schemaName = "HSE";
+table.tableType = COLUMNSTORE;
+table.temporary = false;
+table.loggingType = LOGGING;
+table.columns = [
+{name = "TSK_DBID"; sqlType = INTEGER; nullable = false;},//Primary Key
+
+{name = "INV_DBID"; 		sqlType = INTEGER; 	nullable = true;	},
+{name = "CF_DBID"; 			sqlType = INTEGER; 	nullable = true; 	},
+{name = "RC_DBID";  		sqlType = INTEGER; 	nullable = true; 	},
+{name = "TaskID"; 			sqlType = NVARCHAR; 	nullable = true;	length = 20;},
+{name = "Title";  			sqlType = NVARCHAR; 	nullable = true; 	length = 50;},
+{name = "Desc";  			sqlType = NVARCHAR; 	nullable = true;  	length = 200;},
+{name = "StatusID";  		sqlType = INTEGER; 	nullable = true;},
+{name = "InvLeadID";  		sqlType = INTEGER; 	nullable = true; },
+{name = "InvTeamMembID";  	sqlType = INTEGER; 	nullable = true; },
+{name = "DueDate";  		sqlType = DATE; 		nullable = true; 				},
+{name = "Type";  			sqlType = NVARCHAR; 	nullable = true;  	length = 30;},
+{name = "WfInstanceId";  	sqlType = NVARCHAR; 	nullable = true;  	length = 100;},
+{name = "CreatedDate";  	sqlType = DATE; 	nullable = true; }
+];
+table.primaryKey.pkcolumns = ["TSK_DBID","INV_DBID"];

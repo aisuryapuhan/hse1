@@ -1,0 +1,10 @@
+table.schemaName = "HSE";
+table.tableType = COLUMNSTORE;
+table.temporary = false;
+table.loggingType = LOGGING;
+table.columns = [
+{name = "ROLE_DBID"; sqlType = INTEGER; nullable = false;},//Primary Key
+
+{name = "RoleName"; 		sqlType = NVARCHAR; 	nullable = true; 	length = 50;}
+];
+table.primaryKey.pkcolumns = ["ROLE_DBID"];

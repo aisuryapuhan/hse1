@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_INVESTIGATIONS" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal" dimensionType="Standard">
+  <descriptions defaultDescription="AT_GET_TASK"/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <attributes>
+    <attribute id="Status" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Status"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::STATUS" columnName="Status"/>
+    </attribute>
+    <attribute id="UserID" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="UserID"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::PERSONS" columnName="UserID"/>
+    </attribute>
+    <attribute id="FullName" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="FullName"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::PERSONS" columnName="FullName"/>
+    </attribute>
+    <attribute id="INV_DBID" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="INV_DBID"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="INV_DBID"/>
+    </attribute>
+    <attribute id="IncidentNo" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="IncidentNo"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="IncidentNo"/>
+    </attribute>
+    <attribute id="Title" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Title"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="Title"/>
+    </attribute>
+    <attribute id="Department" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Department"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="Department"/>
+    </attribute>
+    <attribute id="Location" order="8" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Location"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="Location"/>
+    </attribute>
+    <attribute id="Hipo" order="9" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Hipo"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="Hipo"/>
+    </attribute>
+    <attribute id="RiskScore" order="10" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="RiskScore"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="RiskScore"/>
+    </attribute>
+    <attribute id="InvLeadID" order="11" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="InvLeadID"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="InvLeadID"/>
+    </attribute>
+    <attribute id="FldIncMngrUsrID" order="12" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="FldIncMngrUsrID"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="FldIncMngrUsrID"/>
+    </attribute>
+    <attribute id="StatusID" order="13" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="StatusID"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="StatusID"/>
+    </attribute>
+    <attribute id="CreatedDate" order="14" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="CreatedDate"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="CreatedDate"/>
+    </attribute>
+    <attribute id="CreatedTime" order="15" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="CreatedTime"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="CreatedTime"/>
+    </attribute>
+    <attribute id="System" order="16" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="System"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="System"/>
+    </attribute>
+    <attribute id="DeviceId" order="17" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="DeviceId"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="DeviceId"/>
+    </attribute>
+    <attribute id="DeviceType" order="18" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="DeviceType"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="DeviceType"/>
+    </attribute>
+    <attribute id="Severity" order="19" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Severity"/>
+      <keyMapping schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1" columnName="Severity"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::STATUS"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::PERSONS"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1"/>
+      </tableProxy>
+    </tableProxies>
+    <joins>
+      <join>
+        <leftTable schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1"/>
+        <rightTable schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::PERSONS"/>
+        <leftColumns>
+          <columnName>InvLeadID</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>PER_DBID</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+      <join>
+        <leftTable schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::INVESTIGATIONS" alias="HSE_1"/>
+        <rightTable schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::STATUS"/>
+        <leftColumns>
+          <columnName>StatusID</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>STS_DBID</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+    </joins>
+    <layout>
+      <shapes>
+        <shape modelObjectName="HSE.Investigation_Tool.Tables::STATUS" modelObjectNameSpace="HSE" modelObjectType="catalog">
+          <upperLeftCorner x="635" y="317"/>
+        </shape>
+        <shape modelObjectName="HSE.Investigation_Tool.Tables::PERSONS" modelObjectNameSpace="HSE" modelObjectType="catalog">
+          <upperLeftCorner x="673" y="79"/>
+        </shape>
+        <shape modelObjectName="HSE_1" modelObjectNameSpace="HSE" modelObjectType="catalog">
+          <upperLeftCorner x="34" y="90"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>
