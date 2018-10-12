@@ -4,6 +4,7 @@ var dummy = 0;//For the fields which are not mapped
 var ReqBody = $.request.body.asString();
 ReqBody = JSON.parse(ReqBody);
 //Test one file
+//Second comment added for the branch
 var conn = $.hdb.getConnection();
 
 try
