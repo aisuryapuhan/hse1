@@ -1,0 +1,9 @@
+host = "ecc.virtual.address";
+port = 5000;
+pathPrefix = "/sap/opu/odata/sap/ZMUR_HSE_SRV";
+proxyType = http;
+proxyHost = "localhost";
+proxyPort = 20003;
+authType = basic;
+useSSL = false;
+timeout = 30000;

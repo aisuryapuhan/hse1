@@ -1,0 +1,9 @@
+host = "ecc.virtual.address";  // Virtual Host defined on Cloud Connector
+port = 5000;                   // Virtual Port defined on Cloud connector
+pathPrefix = "/sap/opu/odata/sap/EHS_INC_REPORTINCIDENT_SRV/"; // OData Service
+useProxy = true;    // Its should be true , as we re using On-Premise system 
+proxyHost = "localhost";  //connects, via a Cloud Connector tunnel,                 //to on-premise services and resources
+proxyPort = 20003;     // Proxy Port
+authType = basic;     // Authentication Type is Basic Authentication
+useSSL = false;
+timeout = 30000;

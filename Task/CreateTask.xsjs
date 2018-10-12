@@ -16,8 +16,9 @@ try
 	{
 
 		//-----------------------Task Header Item-------------------//
-	
-		var taskID = "#TID"+taskdbid;
+
+		//var taskID = "#TID"+taskdbid;
+		var taskID = taskdbid;//Removed the Prefix
 		var Task_query = "INSERT INTO \"HSE\".\"HSE.Investigation_Tool.Tables::TASKS\" VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		conn.executeUpdate(
 				Task_query,
@@ -52,13 +53,13 @@ try
 					ReqBody.Comments[i].CreatedDate,			
 					ReqBody.Comments[i].CreatedTime,
 					ReqBody.InvLeadID //Here Comments is Added by The Investigation Lead at the time of Task Creation
-					
+
 			);
 		}
 
 //		-----------------------Attachments -------------------//
 
-		var Attach_query = "INSERT INTO \"HSE\".\"HSE.Investigation_Tool.Tables::ATTACHMENTS\" VALUES (?,?,?,?,?,?,?)";
+		var Attach_query = "INSERT INTO \"HSE\".\"HSE.Investigation_Tool.Tables::ATTACHMENTS\" VALUES (?,?,?,?,?,?,?,?,?)";
 		var i=0;
 		for (i = 0;i < ReqBody.Attachements.length; i++)
 		{
@@ -70,10 +71,12 @@ try
 					ReqBody.Attachements[i].FileType,
 					ReqBody.Attachements[i].FileName,			
 					ReqBody.Attachements[i].DocumentID,
-					ReqBody.Attachements[i].FileSize
+					ReqBody.Attachements[i].FileSize,
+					ReqBody.Attachements[i].Url,
+					ReqBody.Attachements[i].CreatedDate
 			);
 		}
-	
+
 	}//Insert Block
 	else if(Mode === "U")//Update Block
 	{
@@ -81,7 +84,7 @@ try
 		UpdateTask(ReqBody.StatusID,ReqBody.WfInstanceId,ReqBody.TSK_DBID);
 
 	}
-	
+
 	conn.commit();
 }
 catch(e)
@@ -93,50 +96,65 @@ catch(e)
 }
 finally 
 {  
-	
+
 	//Functions.close([conn]);
-	if($.response.status === 200)// Means Insert Is success
+	if($.response.status === 200 && Mode === 'I')// Means Insert Is success
 	{
 		//Push Notification will Be triggered
 		var alertText = "Task : " +taskID+" is assigned for your action";
 		Functions.SendNotification(alertText,ReqBody.InvTeamMembLoginName);
+		//Get Investigation Team Member Data
+		var persondata;
+		persondata = Functions.GetPersonData(ReqBody.InvTeamMembID);
 		//============================Trigger WorkFlow
-			var wfBody = {
-				"definitionId" : "digital_field_ticket_workflow",//digital_field_ticket_workflow",
-				"context" : {
-					"appId" : taskID, 
-					"fieldTicketId" : taskID,
-					"department" : "Operation",
-					"location" : "US",
-					"isApprovedByMurphyEngineer": "true",
-					"workflowTriggerTimeStamp" : "",
-					"vendorId" : "Test",
-					"vendorName" :  "abc",
-					"vendorEmailId" : "pranav.nagpal.1990@Incture.com",
-					"murphyEngineerId" : "P000002",
-					"murphyEngineerEmailId" : "pranav.nagpal.1990@Incture.com"
-				}
-		};
-		var wfResponse=Functions.TriggerWorkFlow(wfBody);
-		WfId =wfResponse.wfInstanceId;
-		if(wfResponse.statusCode === 201) //WF triggered
-		{			
-			UpdateTask(ReqBody.StatusID,WfId,taskdbid);
-			$.response.contentType = 'application/json';
-			//$.response.setBody(JSON.stringify(e.message));
-			$.response.setBody(JSON.stringify(
-					{
-						"TaskId" : taskID,				
-						"Success": "Task is Created and Workflow is triggered.",
-						"Code": $.response.status,
-						"WFMessage" : wfResponse
-						
-					}
-			));
+		var wfBody = {
 
-		}
+				"definitionId" : "smart_recommendation_data_gathering_process",
+				"context" : { "taskId" : taskID,
+					           "invTeamMemberEmail" : persondata.Email,
+					            "invTeamMemberName" : persondata.FullName,
+					          "invTeamMemberId" : persondata.UserID	
+					}
+		
+	};
+	var wfResponse=Functions.TriggerWorkFlow(wfBody);
+	WfId =wfResponse.wfInstanceId;
+	if(wfResponse.statusCode === 201) //WF triggered
+	{			
+		UpdateTask(ReqBody.StatusID,WfId,taskdbid);
+		$.response.contentType = 'application/json';
+		//$.response.setBody(JSON.stringify(e.message));
+		$.response.setBody(JSON.stringify(
+				{
+					"TaskId" : taskID,				
+					"Success": "Task is Created and Workflow is triggered.",
+					"Code": $.response.status,
+					"WFMessage" : wfResponse
+
+				}
+		));
+
 	}
-	Functions.close([conn]);	
+}
+	
+	else if ($.response.status === 200 && Mode === 'U')// Means Update  Is success
+		{
+		//Update WF should be Triggred
+		$.response.contentType = 'application/json';
+		$.response.setBody(JSON.stringify(
+				{
+							
+					"Success": "Task and Workflow is Updated.",
+					"Code": $.response.status
+				
+
+				}
+		));
+		
+		}
+	
+	
+Functions.close([conn]);	
 }
 
 //Local Function
@@ -147,7 +165,8 @@ function UpdateTask(StatusID,WfInstanceId,TSK_DBID)
 			Tsk_query,
 			StatusID,
 			WfInstanceId,
-			TSK_DBID);
+			TSK_DBID
+			);
 	conn.commit();
 	//Update WF
 }

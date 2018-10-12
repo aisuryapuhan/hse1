@@ -81,7 +81,12 @@ function TriggerWorkFlow(body){
 			});
 		}
 		else
-		{ return ({statusCode:500,ErrMsg:JSON.parse(response.body.asString())});}
+		{ 
+			return (
+					{statusCode:500,ErrMsg:JSON.parse(response.body.asString())	}
+					
+					);
+			}
 
 	}
 	catch(eee){
@@ -123,3 +128,48 @@ function SendNotification(alertText,LoginName)
 }
 //::::::::::::::::::::::::::::::::::::::: Send Push Notification ::::::::::::::::::::::::::::::::
 
+//::::::::::::::::::::::::::::::::::::::: Get Person Details ::::::::::::::::::::::::::::::::
+function GetPersonData(PER_DBID)
+{
+	var conn = $.db.getConnection();
+	var seq_query = 'SELECT  "UserID","FName","Lname","FullName","Email","SAPID","LoginName" FROM "HSE"."HSE.Investigation_Tool.Tables::PERSONS" WHERE PER_DBID = '+PER_DBID+'';
+	var seq_stmt = conn.prepareStatement(seq_query);
+	var rs_seq = seq_stmt.executeQuery();
+
+	if (!rs_seq.next()) {
+		$.response.setBody( "Failed to retrieve data" );
+		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
+		
+	}
+	else {		
+			return ({ 
+				"UserID":rs_seq.getString(1),
+				"FName":rs_seq.getString(2),
+				"Lname":rs_seq.getString(3),
+				"FullName":rs_seq.getString(4),
+				"Email":rs_seq.getString(5),
+				"SAPID":rs_seq.getString(6),
+				"LoginName":rs_seq.getString(7)
+			});
+		
+	}
+
+	close([conn]);
+}
+//::::::::::::::::::::::::::::::::::::::: Get Person Details ::::::::::::::::::::::::::::::::
+
+
+//function getTaskId(workflowid, userid){
+//	var Token = getCSRF();
+//	var url = "/workflow-instances" + workflowid + '/execution-logs';
+//	var request = new $.web.WebRequest($.net.http.GET,url);
+//	    //Setting the token header
+//		request.headers.set("x-csrf-token",Token);
+//		//Application content type
+//		request.headers.set("Content-Type","application/json");
+//		request.headers.set("X-Requested-With","XMLHttpRequest");
+//		//setting the data to be created
+//		client.request(request, destination);
+//		var response = client.getResponse();
+//		return response;
+//}
