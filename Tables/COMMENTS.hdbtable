@@ -1,0 +1,15 @@
+table.schemaName = "HSE";
+table.tableType = COLUMNSTORE;
+table.temporary = false;
+table.loggingType = LOGGING;
+table.columns = [
+{name = "CMNT_DBID"; sqlType = INTEGER; nullable = false;},//Primary Key
+
+{name = "TSK_DBID"; 		sqlType = INTEGER; 	nullable = true;	},
+{name = "INV_DBID"; 		sqlType = INTEGER; 	nullable = true; 	},
+{name = "Comments";  		sqlType = NVARCHAR; nullable = true; length = 200;	},
+{name = "CreatedDate";  	sqlType = DATE; 	nullable = true; 	},
+{name = "CreatedTime";  	sqlType = TIME; 	nullable = true;  	},
+{name = "AddedById";  	    sqlType = INTEGER; 	nullable = true;  	}
+];
+table.primaryKey.pkcolumns = ["CMNT_DBID","TSK_DBID"];

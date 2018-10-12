@@ -1,0 +1,8 @@
+host = "mobile-d998e5467.us2.hana.ondemand.com";
+port = 443;
+pathPrefix = "/restnotification/application/com.murphy.hse";
+proxyType = none;
+proxyHost = "proxy";
+proxyPort = 8080;
+authType = basic;
+useSSL = true;

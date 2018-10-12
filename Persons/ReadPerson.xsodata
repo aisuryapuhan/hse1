@@ -1,0 +1,6 @@
+service namespace "HSE.Investigation_Tool.Persons"
+{
+  "_SYS_BIC"."HSE.Investigation_Tool.Persons/ReadPersonInfo" as "PersonInfo"
+  keys ("PER_DBID");
+   
+}

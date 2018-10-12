@@ -1,0 +1,8 @@
+service
+{
+"HSE"."HSE.Investigation_Tool.Tables::ROLES" as "Roles";
+"HSE"."HSE.Investigation_Tool.Tables::STATUS" as "Status"
+create forbidden
+update forbidden
+delete forbidden;
+}

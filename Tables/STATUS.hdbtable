@@ -1,0 +1,9 @@
+table.schemaName = "HSE";
+table.tableType = COLUMNSTORE;
+table.temporary = false;
+table.loggingType = LOGGING;
+table.columns = [
+{name = "STS_DBID"; sqlType = INTEGER; nullable = false;},//Primary Key
+{name = "Status";  		sqlType = NVARCHAR; nullable = true; length = 40;	}
+];
+table.primaryKey.pkcolumns = ["STS_DBID"];

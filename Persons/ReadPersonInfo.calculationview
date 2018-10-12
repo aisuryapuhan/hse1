@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="ReadPersonInfo" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <descriptions defaultDescription="ReadPersonInfo"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="40"/>
+  <dataSources>
+    <DataSource id="HSE.Investigation_Tool.Tables::PERSONS" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::PERSONS"/>
+    </DataSource>
+    <DataSource id="HSE.Investigation_Tool.Tables::ROLES" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="HSE" columnObjectName="HSE.Investigation_Tool.Tables::ROLES"/>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="PER_DBID"/>
+        <viewAttribute id="UserID"/>
+        <viewAttribute id="FName"/>
+        <viewAttribute id="Lname"/>
+        <viewAttribute id="FullName"/>
+        <viewAttribute id="Email"/>
+        <viewAttribute id="SAPID"/>
+        <viewAttribute id="RoleName"/>
+        <viewAttribute id="ROLE_DBID"/>
+        <viewAttribute id="LoginName"/>
+        <viewAttribute hidden="true" id="JOIN$ROLE_DBID$ROLE_DBID"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#HSE.Investigation_Tool.Tables::PERSONS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER_DBID" source="PER_DBID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UserID" source="UserID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FName" source="FName"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Lname" source="Lname"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FullName" source="FullName"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Email" source="Email"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SAPID" source="SAPID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LoginName" source="LoginName"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ROLE_DBID$ROLE_DBID" source="ROLE_DBID"/>
+      </input>
+      <input node="#HSE.Investigation_Tool.Tables::ROLES">
+        <mapping xsi:type="Calculation:AttributeMapping" target="RoleName" source="RoleName"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROLE_DBID" source="ROLE_DBID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ROLE_DBID$ROLE_DBID" source="ROLE_DBID"/>
+      </input>
+      <joinAttribute name="JOIN$ROLE_DBID$ROLE_DBID"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="UserID" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UserID"/>
+        <keyMapping columnObjectName="Join_1" columnName="UserID"/>
+      </attribute>
+      <attribute id="FName" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FName"/>
+        <keyMapping columnObjectName="Join_1" columnName="FName"/>
+      </attribute>
+      <attribute id="Lname" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Lname"/>
+        <keyMapping columnObjectName="Join_1" columnName="Lname"/>
+      </attribute>
+      <attribute id="FullName" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FullName"/>
+        <keyMapping columnObjectName="Join_1" columnName="FullName"/>
+      </attribute>
+      <attribute id="Email" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Email"/>
+        <keyMapping columnObjectName="Join_1" columnName="Email"/>
+      </attribute>
+      <attribute id="SAPID" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SAPID"/>
+        <keyMapping columnObjectName="Join_1" columnName="SAPID"/>
+      </attribute>
+      <attribute id="RoleName" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="RoleName"/>
+        <keyMapping columnObjectName="Join_1" columnName="RoleName"/>
+      </attribute>
+      <attribute id="ROLE_DBID" key="true" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ROLE_DBID"/>
+        <keyMapping columnObjectName="Join_1" columnName="ROLE_DBID"/>
+      </attribute>
+      <attribute id="LoginName" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LoginName"/>
+        <keyMapping columnObjectName="Join_1" columnName="LoginName"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="PER_DBID" order="1" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PER_DBID"/>
+        <measureMapping columnObjectName="Join_1" columnName="PER_DBID"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="60" y="140"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="60" y="280"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

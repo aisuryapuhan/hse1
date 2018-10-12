@@ -1,0 +1,20 @@
+service namespace "HSE.Investigation_Tool.Persons"
+{
+ "HSE"."HSE.Investigation_Tool.Tables::TASKS" as "Tasks"
+	navigates 
+		(
+			"ToCmntsAssctn" as "ComntDtls",//Comments Navigation
+			"ToAttachmntAssctn" as "AtchmntDtls"//Attachements Navigation	
+		
+		);
+
+//Comments Item
+"HSE"."HSE.Investigation_Tool.Tables::COMMENTS" as "Commnets";
+association "ToCmntsAssctn" principal "Tasks"("TSK_DBID","INV_DBID")
+multiplicity "1" dependent "Commnets"("TSK_DBID","INV_DBID") multiplicity "*";
+
+//Attachements Item
+ "HSE"."HSE.Investigation_Tool.Tables::ATTACHMENTS" as "Attachements";
+association "ToAttachmntAssctn" principal "Tasks"("TSK_DBID","INV_DBID")
+multiplicity "1" dependent "Attachements"("TSK_DBID","INV_DBID") multiplicity "*";
+}

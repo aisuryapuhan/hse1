@@ -1,0 +1,24 @@
+table.schemaName = "HSE";
+table.tableType = COLUMNSTORE;
+table.temporary = false;
+table.loggingType = LOGGING;
+table.columns = [
+{name = "INV_DBID"; sqlType = INTEGER; nullable = false;},//Primary Key
+
+{name = "IncidentNo"; 		sqlType = NVARCHAR; 	nullable = true;	length = 20;},
+{name = "Title"; 			sqlType = NVARCHAR; 	nullable = true;	length = 80;},
+{name = "Department"; 		sqlType = NVARCHAR; 	nullable = true; 	length = 50;},
+{name = "Location";  		sqlType = NVARCHAR; 	nullable = true; 	length = 50;},
+{name = "Hipo";  			sqlType = NVARCHAR; 	nullable = true; 	length = 20;},
+{name = "RiskScore";  		sqlType = NVARCHAR; 	nullable = true; 	length = 6;},
+{name = "InvLeadID";  		sqlType = INTEGER; 	nullable = true;  	},
+{name = "FldIncMngrUsrID";  sqlType = NVARCHAR; 	nullable = true; 	length = 20;},
+{name = "StatusID";  		sqlType = INTEGER; 	nullable = true;  	},
+{name = "CreatedDate";  	sqlType = DATE; 		nullable = true; 				},
+{name = "CreatedTime";  	sqlType = TIME; 		nullable = true; 				},
+{name = "System";  			sqlType = NVARCHAR; 	nullable = true; 	length = 1;},
+{name = "DeviceId";  		sqlType = NVARCHAR; 	nullable = true;  	length = 50;},
+{name = "DeviceType";  		sqlType = NVARCHAR; 	nullable = true; 	length = 10;},
+{name = "Severity";  		sqlType = NVARCHAR; 	nullable = true; 	length = 5;}
+];
+table.primaryKey.pkcolumns = ["INV_DBID"];

@@ -1,0 +1,17 @@
+table.schemaName = "HSE";
+table.tableType = COLUMNSTORE;
+table.temporary = false;
+table.loggingType = LOGGING;
+table.columns = [
+{name = "ATTCH_DBID"; sqlType = INTEGER; nullable = false;},//Primary Key
+
+{name = "TSK_DBID"; 		sqlType = INTEGER; 	nullable = true;	},
+{name = "INV_DBID"; 		sqlType = INTEGER; 	nullable = true; 	},
+{name = "FileType";  		sqlType = NVARCHAR; nullable = true; length = 20;	},
+{name = "FileName";  	sqlType = NVARCHAR; 	nullable = true; length = 50;	},
+{name = "DocumentID";  	sqlType = NVARCHAR; 	nullable = true; length = 150; 	},
+{name = "FileSize";  	sqlType = NVARCHAR; 	nullable = true; length = 20;	},
+{name = "Url";  	    sqlType = NVARCHAR; 	nullable = true; length = 300;	},
+{name = "CreatedDate";  sqlType = DATE; 	nullable = true;}
+];
+table.primaryKey.pkcolumns = ["ATTCH_DBID","TSK_DBID"];

@@ -1,0 +1,10 @@
+table.schemaName = "HSE";
+table.tableType = COLUMNSTORE;
+table.temporary = false;
+table.loggingType = LOGGING;
+table.columns = [
+{name = "ID"; sqlType = INTEGER; nullable = false;},
+{name = "INV_DBID"; sqlType = INTEGER; nullable = false;},
+{name = "CF_DBID"; sqlType = INTEGER; nullable = false;}
+];
+table.primaryKey.pkcolumns = ["INV_DBID","ID"];

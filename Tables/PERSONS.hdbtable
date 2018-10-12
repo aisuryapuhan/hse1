@@ -1,0 +1,19 @@
+table.schemaName = "HSE";
+table.tableType = COLUMNSTORE;
+table.temporary = false;
+table.loggingType = LOGGING;
+table.columns = [
+{name = "PER_DBID"; sqlType = INTEGER; nullable = false;},//Primary Key
+
+{name = "ROLE_DBID";  	sqlType = INTEGER; 		},
+{name = "UserID"; 		sqlType = NVARCHAR; 	nullable = true; 	length = 20;},
+{name = "FName"; 		sqlType = NVARCHAR; 	nullable = true; 	length = 30;},
+{name = "Lname";  		sqlType = NVARCHAR; 	nullable = true; 	length = 50;},
+{name = "FullName";  	sqlType = NVARCHAR; 	nullable = true; 	length = 50;},
+{name = "Email";  		sqlType = NVARCHAR; 	nullable = true; 	length = 50;},
+{name = "SAPID";  		sqlType = NVARCHAR; 	nullable = true; 	length = 20;},
+{name = "LoginName";  	sqlType = NVARCHAR; 	nullable = true; 	length = 50;}
+
+
+];
+table.primaryKey.pkcolumns = ["PER_DBID"];
